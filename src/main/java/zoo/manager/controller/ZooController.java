@@ -1,7 +1,6 @@
 package zoo.manager.controller;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import zoo.manager.entities.Zone;
 import zoo.manager.handler.AnimalRepositoryHandler;
 import zoo.manager.handler.SpeciesRepositoryHandler;
 import zoo.manager.handler.ZoneRepositoryHandler;
-import zoo.manager.model.request.AnimalReq;
+import zoo.manager.model.request.AddAnimalReq;
 import zoo.manager.model.response.ZoneWithHighestExpenses;
 
 @RestController
@@ -85,7 +84,7 @@ public class ZooController {
 
     @PostMapping("/animal")
     @ResponseStatus(HttpStatus.CREATED)
-    public Animal addAnimal(@RequestBody AnimalReq animalReq) {
+    public Animal addAnimal(@RequestBody AddAnimalReq animalReq) {
         return animalRepositoryHandler.addAnimal(animalReq);
     }
 

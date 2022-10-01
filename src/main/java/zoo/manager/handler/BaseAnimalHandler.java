@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import zoo.manager.entities.Animal;
 import zoo.manager.entities.Species;
 import zoo.manager.entities.Zone;
-import zoo.manager.model.request.AnimalReq;
+import zoo.manager.model.request.AddAnimalReq;
 import zoo.manager.repository.AnimalRepository;
 
 @Service
@@ -42,7 +42,7 @@ public class BaseAnimalHandler implements AnimalRepositoryHandler {
     }
 
     @Override
-    public Animal addAnimal(AnimalReq animalReq) {
+    public Animal addAnimal(AddAnimalReq animalReq) {
         Species species = checkIfSpeciesExistInDB(animalReq.getSpeciesName());
         Zone zone = checkIfZoneExistInDB(animalReq.getZoneName());
         if(species == null || zone == null) {

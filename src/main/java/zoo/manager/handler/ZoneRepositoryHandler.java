@@ -1,6 +1,5 @@
 package zoo.manager.handler;
 
-import java.awt.print.Pageable;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import zoo.manager.entities.Zone;

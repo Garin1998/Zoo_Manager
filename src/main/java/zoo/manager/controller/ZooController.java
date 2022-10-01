@@ -67,8 +67,8 @@ public class ZooController {
 
     @GetMapping("/zone/zoneWithHighestExpenses")
     @ResponseStatus(HttpStatus.OK)
-    public Iterable<ZoneWithHighestExpenses> findZoneWithHighestExpenses() {
-        return zoneRepositoryHandler.findZonesWithTotalExpenses(PageRequest.of(0, 1));
+    public ZoneWithHighestExpenses findZoneWithHighestExpenses() {
+        return zoneRepositoryHandler.findZonesWithTotalExpenses(PageRequest.of(0, 1)).iterator().next();
     }
 
     @PostMapping("/zone")

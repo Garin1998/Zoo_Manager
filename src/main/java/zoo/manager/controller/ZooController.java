@@ -16,7 +16,8 @@ import zoo.manager.handler.AnimalRepositoryHandler;
 import zoo.manager.handler.SpeciesRepositoryHandler;
 import zoo.manager.handler.ZoneRepositoryHandler;
 import zoo.manager.model.request.AddAnimalReq;
-import zoo.manager.model.response.ZoneWithHighestExpenses;
+import zoo.manager.model.response.ZoneWithAnimalsCountedUpRes;
+import zoo.manager.model.response.ZoneWithHighestExpensesRes;
 
 @RestController
 @RequestMapping("/zoo_manager")
@@ -66,8 +67,14 @@ public class ZooController {
 
     @GetMapping("/zone/zoneWithHighestExpenses")
     @ResponseStatus(HttpStatus.OK)
-    public ZoneWithHighestExpenses findZoneWithHighestExpenses() {
+    public ZoneWithHighestExpensesRes findZoneWithHighestExpenses() {
         return zoneRepositoryHandler.findZonesWithTotalExpenses(PageRequest.of(0, 1)).iterator().next();
+    }
+
+    @GetMapping("/zone/zoneWithLowestOcccupants")
+    @ResponseStatus(HttpStatus.OK)
+    public ZoneWithAnimalsCountedUpRes findZoneWithLowestOccupants() {
+        return zoneRepositoryHandler.findZonesWithAnimalCountedUp(PageRequest.of(0,1)).iterator().next();
     }
 
     @PostMapping("/zone")

@@ -4,7 +4,8 @@ import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import zoo.manager.entities.Zone;
-import zoo.manager.model.response.ZoneWithHighestExpenses;
+import zoo.manager.model.response.ZoneWithAnimalsCountedUpRes;
+import zoo.manager.model.response.ZoneWithHighestExpensesRes;
 import zoo.manager.repository.ZoneRepository;
 
 @Service
@@ -32,7 +33,12 @@ public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
     }
 
     @Override
-    public Iterable<ZoneWithHighestExpenses> findZonesWithTotalExpenses(PageRequest pageRequest) {
+    public Iterable<ZoneWithHighestExpensesRes> findZonesWithTotalExpenses(PageRequest pageRequest) {
         return zoneRepository.findZonesWithTotalExpenses(pageRequest);
+    }
+
+    @Override
+    public Iterable<ZoneWithAnimalsCountedUpRes> findZonesWithAnimalCountedUp(PageRequest pageRequest) {
+        return zoneRepository.findZonesWithAnimalCountedUp(pageRequest);
     }
 }

@@ -6,10 +6,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ZoneWithHighestExpenses {
+public class ZoneWithAnimalsCountedUpRes {
 
     private UUID uuid;
     private String name;
-    private double totalExpenses;
-
+    private long amount;
 }

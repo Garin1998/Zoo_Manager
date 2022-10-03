@@ -1,4 +1,4 @@
-package zoo.manager.repository;
+package zoo.manager.repositories;
 
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;

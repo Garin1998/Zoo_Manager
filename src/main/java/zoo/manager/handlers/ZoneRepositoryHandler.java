@@ -1,10 +1,10 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import zoo.manager.entities.Zone;
-import zoo.manager.model.response.ZoneWithAnimalsCountedUpRes;
-import zoo.manager.model.response.ZoneWithHighestExpensesRes;
+import zoo.manager.models.responses.ZoneWithAnimalsCountedUpRes;
+import zoo.manager.models.responses.ZoneWithHighestExpensesRes;
 
 public interface ZoneRepositoryHandler {
     Zone addZone(Zone zone);

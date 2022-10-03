@@ -1,12 +1,12 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import zoo.manager.entities.Zone;
-import zoo.manager.model.response.ZoneWithAnimalsCountedUpRes;
-import zoo.manager.model.response.ZoneWithHighestExpensesRes;
-import zoo.manager.repository.ZoneRepository;
+import zoo.manager.models.responses.ZoneWithAnimalsCountedUpRes;
+import zoo.manager.models.responses.ZoneWithHighestExpensesRes;
+import zoo.manager.repositories.ZoneRepository;
 
 @Service
 public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {

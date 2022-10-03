@@ -1,4 +1,4 @@
-package zoo.manager.controller;
+package zoo.manager.controllers;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import zoo.manager.entities.Animal;
 import zoo.manager.entities.Species;
 import zoo.manager.entities.Zone;
-import zoo.manager.handler.AnimalRepositoryHandler;
-import zoo.manager.handler.SpeciesRepositoryHandler;
-import zoo.manager.handler.ZoneRepositoryHandler;
-import zoo.manager.model.request.AddAnimalReq;
-import zoo.manager.model.response.ZoneWithAnimalsCountedUpRes;
-import zoo.manager.model.response.ZoneWithHighestExpensesRes;
+import zoo.manager.handlers.AnimalRepositoryHandler;
+import zoo.manager.handlers.SpeciesRepositoryHandler;
+import zoo.manager.handlers.ZoneRepositoryHandler;
+import zoo.manager.models.requests.AddAnimalReq;
+import zoo.manager.models.responses.ZoneWithAnimalsCountedUpRes;
+import zoo.manager.models.responses.ZoneWithHighestExpensesRes;
 
 @RestController
 @RequestMapping("/zoo_manager")

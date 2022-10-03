@@ -1,4 +1,4 @@
-package zoo.manager.model.request;
+package zoo.manager.models.requests;
 
 import lombok.Data;
 

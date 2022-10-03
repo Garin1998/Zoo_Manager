@@ -1,7 +1,7 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import zoo.manager.entities.Animal;
-import zoo.manager.model.request.AddAnimalReq;
+import zoo.manager.models.requests.AddAnimalReq;
 
 public interface AnimalRepositoryHandler {
     Iterable<Animal> findAllAnimals();

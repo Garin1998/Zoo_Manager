@@ -1,4 +1,4 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import java.util.Optional;
 import zoo.manager.entities.Species;

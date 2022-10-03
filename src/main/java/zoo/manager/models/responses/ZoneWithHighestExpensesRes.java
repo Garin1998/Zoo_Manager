@@ -1,4 +1,4 @@
-package zoo.manager.model.response;
+package zoo.manager.models.responses;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -6,9 +6,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ZoneWithAnimalsCountedUpRes {
+public class ZoneWithHighestExpensesRes {
 
     private UUID uuid;
     private String name;
-    private long amount;
+    private double totalExpenses;
+
 }

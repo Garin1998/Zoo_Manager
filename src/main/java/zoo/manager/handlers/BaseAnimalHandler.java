@@ -1,11 +1,11 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import org.springframework.stereotype.Service;
 import zoo.manager.entities.Animal;
 import zoo.manager.entities.Species;
 import zoo.manager.entities.Zone;
-import zoo.manager.model.request.AddAnimalReq;
-import zoo.manager.repository.AnimalRepository;
+import zoo.manager.models.requests.AddAnimalReq;
+import zoo.manager.repositories.AnimalRepository;
 
 @Service
 public class BaseAnimalHandler implements AnimalRepositoryHandler {

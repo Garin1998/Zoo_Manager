@@ -1,9 +1,9 @@
-package zoo.manager.handler;
+package zoo.manager.handlers;
 
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 import zoo.manager.entities.Species;
-import zoo.manager.repository.SpeciesRepository;
+import zoo.manager.repositories.SpeciesRepository;
 
 @Service
 public class BaseSpeciesRepositoryHandler implements SpeciesRepositoryHandler {

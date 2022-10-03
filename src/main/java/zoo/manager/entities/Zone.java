@@ -4,6 +4,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
@@ -22,6 +23,7 @@ public class Zone {
     @ColumnDefault("random_uuid()")
     @Type(type = "uuid-char")
     private UUID uuid;
+    @NotBlank(message = "Please provide name for a new zone")
     private String name;
 
 }

@@ -23,4 +23,6 @@ public interface ZoneRepository extends JpaRepository<Zone, UUID> {
         value = "SELECT new zoo.manager.models.responses.ZoneWithAnimalsCountedUpRes(z.uuid, z.name, COUNT(a.uuid) AS countedUp) "
             + "FROM Zone AS z INNER JOIN Animal AS a ON z.uuid = a.zone GROUP BY z.uuid ORDER BY countedUp ASC")
     Iterable<ZoneWithAnimalsCountedUpRes> findZonesWithAnimalCountedUp(PageRequest pageRequest);
+
+    boolean existsZoneByName(String name);
 }

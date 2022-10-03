@@ -1,5 +1,6 @@
 package zoo.manager.controllers;
 
+import javax.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,24 +75,24 @@ public class ZooController {
     @GetMapping("/zone/zoneWithLowestOcccupants")
     @ResponseStatus(HttpStatus.OK)
     public ZoneWithAnimalsCountedUpRes findZoneWithLowestOccupants() {
-        return zoneRepositoryHandler.findZonesWithAnimalCountedUp(PageRequest.of(0,1)).iterator().next();
+        return zoneRepositoryHandler.findZonesWithAnimalCountedUp(PageRequest.of(0, 1)).iterator().next();
     }
 
     @PostMapping("/zone")
     @ResponseStatus(HttpStatus.CREATED)
-    public Zone addZone(@RequestBody Zone zone) {
+    public String addZone(@RequestBody @Valid Zone zone) {
         return zoneRepositoryHandler.addZone(zone);
     }
 
     @PostMapping("/species")
     @ResponseStatus(HttpStatus.CREATED)
-    public Species addSpecies(@RequestBody Species species) {
+    public String addSpecies(@RequestBody @Valid Species species) {
         return speciesRepositoryHandler.addSpecies(species);
     }
 
     @PostMapping("/animal")
     @ResponseStatus(HttpStatus.CREATED)
-    public Animal addAnimal(@RequestBody AddAnimalReq animalReq) {
+    public Animal addAnimal(@RequestBody @Valid AddAnimalReq animalReq) {
         return animalRepositoryHandler.addAnimal(animalReq);
     }
 

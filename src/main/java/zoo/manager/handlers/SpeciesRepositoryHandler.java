@@ -2,10 +2,11 @@ package zoo.manager.handlers;
 
 import java.util.Optional;
 import zoo.manager.entities.Species;
+import zoo.manager.exceptions.models.RecordDuplicateException;
 
 public interface SpeciesRepositoryHandler {
 
     Iterable<Species> findAllSpecies();
     Optional<Species> findSpeciesByName(String name);
-    Species addSpecies(Species species);
+    String addSpecies(Species species) throws RecordDuplicateException;
 }

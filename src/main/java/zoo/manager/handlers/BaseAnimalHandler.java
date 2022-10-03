@@ -1,5 +1,6 @@
 package zoo.manager.handlers;
 
+import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 import zoo.manager.entities.Animal;
 import zoo.manager.entities.Species;
@@ -30,7 +31,7 @@ public class BaseAnimalHandler implements AnimalRepositoryHandler {
     @Override
     public Iterable<Animal> findAllByZoneName(String zoneName) {
         Zone zone = checkIfZoneExistInDB(zoneName);
-        if(zone == null) {
+        if (zone == null) {
             return null;
         }
         return animalRepository.findAllByZoneUuid(zone.getUuid());
@@ -45,18 +46,17 @@ public class BaseAnimalHandler implements AnimalRepositoryHandler {
     public Animal addAnimal(AddAnimalReq animalReq) {
         Species species = checkIfSpeciesExistInDB(animalReq.getSpeciesName());
         Zone zone = checkIfZoneExistInDB(animalReq.getZoneName());
-        if(species == null || zone == null) {
-            return null;
-        }
         Animal animal = new Animal(animalReq.getAnimalName(), species, zone);
         return animalRepository.save(animal);
     }
 
-    Species checkIfSpeciesExistInDB(String name) {
-        return speciesRepositoryHandler.findSpeciesByName(name).orElse(null);
+    Species checkIfSpeciesExistInDB(String name) throws NoSuchElementException {
+        return speciesRepositoryHandler.findSpeciesByName(name)
+                                       .orElseThrow(() -> new NoSuchElementException("Species not found"));
     }
 
-    Zone checkIfZoneExistInDB(String name) {
-        return zoneRepositoryHandler.findZoneByName(name).orElse(null);
+    Zone checkIfZoneExistInDB(String name) throws NoSuchElementException {
+        return zoneRepositoryHandler.findZoneByName(name)
+                                    .orElseThrow(() -> new NoSuchElementException("Zone not found"));
     }
 }

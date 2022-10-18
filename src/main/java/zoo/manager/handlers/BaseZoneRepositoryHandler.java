@@ -1,5 +1,6 @@
 package zoo.manager.handlers;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.StringJoiner;
 import org.springframework.data.domain.PageRequest;
@@ -25,10 +26,7 @@ public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
         if (!checkIfZoneNameExists(zone.getName())) {
             zoneRepository.save(zone);
             StringJoiner sj = new StringJoiner(" ");
-            return sj.add("Zone")
-                     .add(zone.getUuid().toString())
-                     .add("has been added successfully")
-                     .toString();
+            return sj.add("Zone").add(zone.getUuid().toString()).add("has been added successfully").toString();
         }
         throw new RecordDuplicateException();
     }
@@ -36,11 +34,6 @@ public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
     @Override
     public Optional<Zone> findZoneByName(String name) {
         return Optional.of(zoneRepository.findZoneByName(name)).orElse(null);
-    }
-
-    @Override
-    public Iterable<Zone> findAllZones() {
-        return zoneRepository.findAll();
     }
 
     @Override

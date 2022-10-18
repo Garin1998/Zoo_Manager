@@ -24,16 +24,8 @@ public class BaseAnimalHandler implements AnimalRepositoryHandler {
     }
 
     @Override
-    public Iterable<Animal> findAllAnimals() {
-        return animalRepository.findAll();
-    }
-
-    @Override
     public Iterable<Animal> findAllByZoneName(String zoneName) {
         Zone zone = checkIfZoneExistInDB(zoneName);
-        if (zone == null) {
-            return null;
-        }
         return animalRepository.findAllByZoneUuid(zone.getUuid());
     }
 

@@ -36,61 +36,43 @@ public class ZooController {
         this.animalRepositoryHandler = animalRepositoryHandler;
     }
 
-    @GetMapping("/zone/all")
-    @ResponseStatus(HttpStatus.OK)
-    public Iterable<Zone> findAllZones() {
-        return zoneRepositoryHandler.findAllZones();
-    }
-
-    @GetMapping("/species/all")
-    @ResponseStatus(HttpStatus.OK)
-    public Iterable<Species> findAllSpecies() {
-        return speciesRepositoryHandler.findAllSpecies();
-    }
-
-    @GetMapping("/animal/all")
-    @ResponseStatus(HttpStatus.OK)
-    public Iterable<Animal> findAllAnimals() {
-        return animalRepositoryHandler.findAllAnimals();
-    }
-
-    @GetMapping("/animal/all/byZone")
+    @GetMapping(value = "/animal/all/byZone", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Animal> findAllAnimalsByZoneName(@RequestParam(value = "zoneName") String zoneName) {
         return animalRepositoryHandler.findAllByZoneName(zoneName);
     }
 
-    @GetMapping("/animal/all/byName")
+    @GetMapping(value = "/animal/all/byName", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Animal> findAllAnimalsByName(@RequestParam(value = "animalName") String animalName) {
         return animalRepositoryHandler.findAllAnimalsByName(animalName);
     }
 
-    @GetMapping("/zone/zoneWithHighestExpenses")
+    @GetMapping(value = "/zone/zoneWithHighestExpenses", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public ZoneWithHighestExpensesRes findZoneWithHighestExpenses() {
         return zoneRepositoryHandler.findZonesWithTotalExpenses(PageRequest.of(0, 1)).iterator().next();
     }
 
-    @GetMapping("/zone/zoneWithLowestOcccupants")
+    @GetMapping(value = "/zone/zoneWithLowestOccupants", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public ZoneWithAnimalsCountedUpRes findZoneWithLowestOccupants() {
         return zoneRepositoryHandler.findZonesWithAnimalCountedUp(PageRequest.of(0, 1)).iterator().next();
     }
 
-    @PostMapping("/zone")
+    @PostMapping(value = "/zone", consumes = "application/json", produces = "plain/text")
     @ResponseStatus(HttpStatus.CREATED)
     public String addZone(@RequestBody @Valid Zone zone) {
         return zoneRepositoryHandler.addZone(zone);
     }
 
-    @PostMapping("/species")
+    @PostMapping(value = "/species", consumes = "application/json", produces = "plain/text")
     @ResponseStatus(HttpStatus.CREATED)
     public String addSpecies(@RequestBody @Valid Species species) {
         return speciesRepositoryHandler.addSpecies(species);
     }
 
-    @PostMapping("/animal")
+    @PostMapping(value = "/animal", consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Animal addAnimal(@RequestBody @Valid AddAnimalReq animalReq) {
         return animalRepositoryHandler.addAnimal(animalReq);

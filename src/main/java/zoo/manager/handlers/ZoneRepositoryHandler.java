@@ -1,5 +1,6 @@
 package zoo.manager.handlers;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import zoo.manager.entities.Zone;
@@ -11,8 +12,7 @@ public interface ZoneRepositoryHandler {
 
     String addZone(Zone zone) throws RecordDuplicateException;
     Optional<Zone> findZoneByName(String name);
-    Iterable<Zone> findAllZones();
-    Iterable<ZoneWithHighestExpensesRes> findZonesWithTotalExpenses(PageRequest pageRequest);
-    Iterable<ZoneWithAnimalsCountedUpRes> findZonesWithAnimalCountedUp(PageRequest pageRequest);
+    Iterable<ZoneWithHighestExpensesRes> findZonesWithTotalExpenses(PageRequest pageRequest);// throws NoSuchElementException;
+    Iterable<ZoneWithAnimalsCountedUpRes> findZonesWithAnimalCountedUp(PageRequest pageRequest);// throws NoSuchElementException;
 
 }

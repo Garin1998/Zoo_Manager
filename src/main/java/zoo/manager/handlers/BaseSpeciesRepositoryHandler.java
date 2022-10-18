@@ -17,11 +17,6 @@ public class BaseSpeciesRepositoryHandler implements SpeciesRepositoryHandler {
     }
 
     @Override
-    public Iterable<Species> findAllSpecies() {
-        return speciesRepository.findAll();
-    }
-
-    @Override
     public Optional<Species> findSpeciesByName(String name) {
         return Optional.of(speciesRepository.findSpeciesByName(name)).orElse(null);
     }

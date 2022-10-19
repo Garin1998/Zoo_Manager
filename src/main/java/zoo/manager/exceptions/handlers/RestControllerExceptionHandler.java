@@ -19,14 +19,9 @@ import zoo.manager.exceptions.models.RecordDuplicateException;
 @ControllerAdvice
 public class RestControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({RecordDuplicateException.class})
+    @ExceptionHandler({RecordDuplicateException.class, NoSuchElementException.class})
     public ResponseEntity<Object> handleBadRequest(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<Object> handleNoSuchElementException() {
-        return new ResponseEntity<>("No records found", HttpStatus.BAD_REQUEST);
     }
 
     @Override

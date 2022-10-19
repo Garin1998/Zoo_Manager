@@ -1,0 +1,9 @@
+zoo.manager
+zoo.manager.controllers
+zoo.manager.entities
+zoo.manager.exceptions.handlers
+zoo.manager.exceptions.models
+zoo.manager.handlers
+zoo.manager.models.requests
+zoo.manager.models.responses
+zoo.manager.repositories

@@ -8,6 +8,7 @@ import zoo.manager.entities.Species;
 public interface SpeciesRepository extends JpaRepository<Species, UUID> {
 
     Optional<Species> findSpeciesByName(String name);
+
     boolean existsSpeciesByName(String name);
 
 }

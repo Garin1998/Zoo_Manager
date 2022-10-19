@@ -11,6 +11,13 @@ import zoo.manager.models.responses.ZoneWithAnimalsCountedUpRes;
 import zoo.manager.models.responses.ZoneWithHighestExpensesRes;
 import zoo.manager.repositories.ZoneRepository;
 
+/**
+ * Class, which is used for implementation of {@link ZoneRepositoryHandler interface} and handle requests for zone.
+ *
+ * @author Krzysztof Kubiś
+ * @version 1.0
+ * @since JDK 17
+ */
 @Service
 public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
 
@@ -20,9 +27,11 @@ public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
         this.zoneRepository = zoneRepository;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public String addZone(Zone zone)
-        throws RecordDuplicateException {
+    public String addZone(Zone zone) throws RecordDuplicateException {
         if (!checkIfZoneNameExists(zone.getName())) {
             zoneRepository.save(zone);
             StringJoiner sj = new StringJoiner(" ");
@@ -31,21 +40,37 @@ public class BaseZoneRepositoryHandler implements ZoneRepositoryHandler {
         throw new RecordDuplicateException();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Zone> findZoneByName(String name) {
         return Optional.of(zoneRepository.findZoneByName(name)).orElse(null);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<ZoneWithHighestExpensesRes> findZonesWithTotalExpenses(PageRequest pageRequest) {
         return zoneRepository.findZonesWithTotalExpenses(pageRequest);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<ZoneWithAnimalsCountedUpRes> findZonesWithAnimalCountedUp(PageRequest pageRequest) {
         return zoneRepository.findZonesWithAnimalCountedUp(pageRequest);
     }
 
+    /**
+     * Checks if zone with specified name already exists in database.
+     *
+     * @param name Name of the specified zone
+     *
+     * @return true value if Zone exists in database or false value if not.
+     */
     public boolean checkIfZoneNameExists(String name) {
         return zoneRepository.existsZoneByName(name);
     }

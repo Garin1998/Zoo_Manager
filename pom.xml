@@ -16,6 +16,7 @@
   <properties>
     <java.version>17</java.version>
     <rest-assured.version>5.2.0</rest-assured.version>
+    <gson>2.8.9</gson>
   </properties>
   <dependencies>
     <dependency>
@@ -79,6 +80,12 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

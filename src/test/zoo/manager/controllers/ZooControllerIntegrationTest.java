@@ -43,8 +43,7 @@ class ZooControllerIntegrationTest {
 
     @Test
     @Order(2)
-    public void whenZoneIsDuplicateInDB_thenThrowRecordDuplicateExceptionAndReturn400()
-        throws RecordDuplicateException {
+    public void whenZoneIsDuplicateInDB_thenThrowRecordDuplicateExceptionAndReturn400() throws RecordDuplicateException {
         RestAssured.basePath = "/zoo_manager/zone";
         JsonObject body = createJSONBodyWithZone("A");
 
@@ -71,8 +70,7 @@ class ZooControllerIntegrationTest {
 
     @Test
     @Order(4)
-    public void whenSpeciesIsDuplicateInDB_thenThrowRecordDuplicateExceptionAndReturn400()
-        throws RecordDuplicateException {
+    public void whenSpeciesIsDuplicateInDB_thenThrowRecordDuplicateExceptionAndReturn400() throws RecordDuplicateException {
         RestAssured.basePath = "/zoo_manager/species";
         JsonObject body = createJSONBodyWithSpecies("Lion", 11.0);
 
@@ -105,7 +103,7 @@ class ZooControllerIntegrationTest {
         RestAssured.basePath = "/zoo_manager/animal";
         Response response = RestAssured.given().body("").post().thenReturn();
 
-        assertEquals(response.getStatusCode(),HttpStatus.UNSUPPORTED_MEDIA_TYPE.value());
+        assertEquals(response.getStatusCode(), HttpStatus.UNSUPPORTED_MEDIA_TYPE.value());
     }
 
     @Test
@@ -114,7 +112,7 @@ class ZooControllerIntegrationTest {
         RestAssured.basePath = "/zoo_manager/zone/zoneWithLowestOccupants";
         Response response = RestAssured.get().andReturn();
 
-        assertEquals(response.getStatusCode(),HttpStatus.OK.value());
+        assertEquals(response.getStatusCode(), HttpStatus.OK.value());
     }
 
     @Test
@@ -123,7 +121,7 @@ class ZooControllerIntegrationTest {
         RestAssured.basePath = "/zoo_manager/zone/zoneWithHighestExpenses";
         Response response = RestAssured.get().andReturn();
 
-        assertEquals(response.getStatusCode(),HttpStatus.OK.value());
+        assertEquals(response.getStatusCode(), HttpStatus.OK.value());
     }
 
     public JsonObject createJSONBodyWithZone(String name) {

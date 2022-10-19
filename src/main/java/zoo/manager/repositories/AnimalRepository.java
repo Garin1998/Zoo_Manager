@@ -7,5 +7,6 @@ import zoo.manager.entities.Animal;
 public interface AnimalRepository extends JpaRepository<Animal, UUID> {
 
     Iterable<Animal> findAllByZoneUuid(UUID zoneUUID);
+
     Iterable<Animal> findAllByName(String animalName);
 }
